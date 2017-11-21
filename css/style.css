@@ -1,0 +1,17 @@
+
+/* 
+    Created on : 20.11.2017, 17:37:33
+    Author     : Student
+*/
+#human_info{
+    border: 1px solid black;
+    width: 50%;
+}
+#human_info td,th{
+    border: 1px solid black;
+}
+#add_user{
+     border: 1px solid black;
+     width: 25%;
+     margin: 0 auto;
+}
