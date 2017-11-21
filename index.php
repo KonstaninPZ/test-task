@@ -4,10 +4,10 @@
             !empty($_POST['check_human']) && 
             $_POST['operation']!="false"){
         var_dump ($_POST['check_human']);      
-//            if($_POST['operation']=="DELETE")
-//                Db::delete_human ();
-//            if($_POST['operation']=="ADD")
-//                Db::insert_data_to_table ();
+            if($_POST['operation']=="DELETE")
+                Db::delete_human ();
+            if($_POST['operation']=="ADD")
+                Db::insert_data_to_table ();
             }
 ?>
 <!DOCTYPE html>
@@ -18,16 +18,7 @@
         <title>Test</title>
         <link href="css/style.css" rel="stylesheet" type="text/css">
         <script>
-            function validate(form){
-                fail = validateFirstName(form.first_name.value);
-                fail += validateSecondName(form.second_name.value);
-                fail += validateEmail(form.email.value)
-                if(fail == "") return true;
-                else{
-                    alert(fail);
-                    return false;
-                }
-            }
+
         </script>
     </head>
     <body>

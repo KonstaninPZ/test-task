@@ -1,4 +1,13 @@
-
+function validate(form){
+    fail = validateFirstName(form.first_name.value);
+    fail += validateSecondName(form.second_name.value);
+    fail += validateEmail(form.email.value)
+    if(fail == "") return true;
+    else{
+        alert(fail);
+        return false;
+    }
+}
 function validateFirstName(field){
     if(field == "") return "Не введено имя. \n"
     return "";
