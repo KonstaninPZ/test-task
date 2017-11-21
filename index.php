@@ -1,14 +1,22 @@
 <?php 
     require_once './Db.php';
-    if(isset($_POST['execute']) && 
-            !empty($_POST['check_human']) && 
+    if(isset($_POST['execute'])  && 
             $_POST['operation']!="false"){
-        var_dump ($_POST['check_human']);      
-            if($_POST['operation']=="DELETE")
+        
+        if($_POST['operation']=="DELETE" && 
+            !empty($_POST['check_human'])){
                 Db::delete_human ();
-            if($_POST['operation']=="ADD")
-                Db::insert_data_to_table ();
+        }
+        if($_POST['operation']=="EDIT" && 
+            !empty($_POST['check_human'])){
+                Db::delete_human ();
+        }
+        if($_POST['operation']=="ADD"){
+            echo 'it works';
+            if(isset($_POST['operation']))
+                require './add_human.php';
             }
+    }
 ?>
 <!DOCTYPE html>
 
@@ -17,8 +25,7 @@
         <meta charset="UTF-8">
         <title>Test</title>
         <link href="css/style.css" rel="stylesheet" type="text/css">
-        <script>
-
+        <script src="js/script.js">
         </script>
     </head>
     <body>
@@ -34,29 +41,17 @@
             <select name="operation" id="select" size="1">
                 <option value="false">Выбрать действие</option>
                 <option value="DELETE">Удалить данные </option>
-                <option value="UPDATE">Редактировать данные</option>
-                <option value="Add">Добавить данные</option>
+                <option value="EDIT">Редактировать данные</option>
+                <option value="ADD">Добавить данные</option>
             </select>
                 <input type="submit" value="Выполнить" name="execute" >
        
         </form>
-        <h2>Добавить пользователя</h2>
-        <form method="POST" id="add_user" onsubmit="return validate(this)">
-        <p>Введите имя:<br> 
-        <input type="text" name="first_name" /></p>
-        <p>Введите фамилию: <br> 
-        <input type="text" name="second_name" /></p>
-        <p>Введите электронный адрес: <br> 
-        <input type="email" name="email" /></p>
-        <input type="submit" name="add_value" value="Добавить">
-        </form>
         <?php
-
-        if(isset($_POST['add_value'])){
-            require_once './Db.php';
-            Db::insert_data_to_table();
-        }
+            if(isset($_POST['add_value'])){
+                require_once './Db.php';
+                Db::add_human();
+            }
         ?>
-        <script src="js/script.js"></script>
     </body>
 </html>

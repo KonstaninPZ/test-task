@@ -15,7 +15,7 @@ class Db {
                             or die("Ошибка " . mysqli_error($link));
         return $link;
     }
-    static function insert_data_to_table(){ //add_user
+    static function add_human(){ 
         
         $link = Db::connect_to_db();
         $first_name = htmlentities(mysqli_real_escape_string($link, $_POST['first_name']));
@@ -51,31 +51,28 @@ class Db {
         echo "<td><input name=\"check_human[]\" type=\"checkbox\" value=\"".$row_rs['id']."\"><br></td>";
         echo "</tr>";
         }
-          
-     
-            // очищаем результат
             mysqli_free_result($rs);
+            mysqli_close($link);
         }
-       // mysqli_close($link);
-    
-    
     static function delete_human(){
-        if($_POST['operation']=="DELETE"){
-      // echo 'Delete',$_POST['execute'];
-       $link = Db::connect_to_db();
-            for($i=0;$i<count($_POST['check_human']);$i++){
-                echo $_POST['check_human'][$i];
-//                $sql  = "DELETE FROM human_info"
-//                   . " WHERE 'human_info.id' = "
-//                   .$_POST['check_human'][$i];
-                $sql = "DELETE FROM `human_info` WHERE `human_info`.`id` = ".$_POST['check_human'][$i];
-                $rs = mysqli_query($link, $sql)
-                 or die("Ошибка " . mysqli_error($link));
-                if($rs){
-                    echo "delete succeful";
-                }
-            }    
-        }
+        $link = Db::connect_to_db();
+        for($i=0;$i<count($_POST['check_human']);$i++){
+            $sql = "DELETE FROM `human_info` WHERE `human_info`.`id` = "
+                    .$_POST['check_human'][$i];
+            $rs = mysqli_query($link, $sql)
+             or die("Ошибка " . mysqli_error($link));
+            if($rs){
+                echo "delete succeful";
+            }
+        }    
     }
-    
+    static function edit_human(){
+        $link = Db::connect_to_db();
+        echo "<table>";
+        for($i=0;$i<count($_POST['check_human']);$i++){
+            //echo $_POST['check_human'][$i];
+            
+        }
+        echo"</table>";
+    }
 }
