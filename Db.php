@@ -70,7 +70,7 @@ class Db {
         $link = Db::connect_to_db();
         echo "<table>";
         for($i=0;$i<count($_POST['check_human']);$i++){
-            //echo $_POST['check_human'][$i];
+            echo "<tr><td>".$_POST['check_human'][$i]."</td></tr>";
             
         }
         echo"</table>";

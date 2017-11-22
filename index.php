@@ -9,10 +9,18 @@
         }
         if($_POST['operation']=="EDIT" && 
             !empty($_POST['check_human'])){
-                Db::delete_human ();
+                Db::edit_human ();
         }
-
+         if(isset($_POST['add_value']) ){
+             echo 'add_human';
+             Db::add_human();
+         }
     }
+             if(isset($_POST['add_value']) ){
+             echo 'add_human';
+             Db::add_human();
+         }
+   
 ?>
 <!DOCTYPE html>
 
@@ -44,9 +52,10 @@
        
         </form>
         <?php
-                if($_POST['operation']=="ADD" && isset($_POST['execute'])){
-            if(isset($_POST['operation']))
+            if($_POST['operation']=="ADD" && isset($_POST['execute'])){
+            
                 require './add_human.php';
+               
             }
            
            
