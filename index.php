@@ -11,11 +11,7 @@
             !empty($_POST['check_human'])){
                 Db::delete_human ();
         }
-        if($_POST['operation']=="ADD"){
-            echo 'it works';
-            if(isset($_POST['operation']))
-                require './add_human.php';
-            }
+
     }
 ?>
 <!DOCTYPE html>
@@ -48,10 +44,12 @@
        
         </form>
         <?php
-            if(isset($_POST['add_value'])){
-                require_once './Db.php';
-                Db::add_human();
+                if($_POST['operation']=="ADD" && isset($_POST['execute'])){
+            if(isset($_POST['operation']))
+                require './add_human.php';
             }
+           
+           
         ?>
     </body>
 </html>
